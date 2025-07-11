@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Inscríbete - NAUTICA GYM</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <div class="social-bubbles">
+    <a href="index.html" class="bubble volver">⬅ Volver al inicio</a>
+  </div>
+  <div class="formulario">
+    <h2>Inscripción</h2>
+    <input type="text" placeholder="Nombre y apellido" required>
+    <input type="email" placeholder="Correo electrónico" required>
+    <textarea placeholder="Mensaje"></textarea>
+    <button onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
+  </div>
+<script>
+  function enviarWhatsApp() {
+    let nombre = document.querySelector('input[type=text]').value;
+    let correo = document.querySelector('input[type=email]').value;
+    let mensaje = document.querySelector('textarea').value;
+    let texto = `Hola, soy ${nombre}, mi correo es ${correo}. ${mensaje}`;
+    window.open(`https://wa.me/593999999999?text=${encodeURIComponent(texto)}`, "_blank");
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>NAUTICA GYM</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="iconos/icon-192.png" />
+  <meta name="theme-color" content="#000000" />
+</head>
+<body>
+  <div class="main">
+    <div class="social-bubbles">
+      <a href="https://instagram.com" class="bubble instagram">Instagram</a>
+      <a href="https://facebook.com" class="bubble facebook">Facebook</a>
+      <a href="https://tiktok.com" class="bubble tiktok">TikTok</a>
+    </div>
+    <div class="hero-image">
+      <img src="galeria/ejemplo1.jpg" alt="Gym Image">
+    </div>
+    <div class="gym-title">
+      <img src="iconos/brazo.png" class="icon-arm" alt="brazo">
+      <span>NAUTICA GYM</span>
+      <img src="iconos/brazo.png" class="icon-arm" alt="brazo">
+    </div>
+    <div class="side-buttons">
+      <a href="inscribete.html" class="bubble side">Inscríbete</a>
+      <a href="servicios.html" class="bubble side">Nuestros Servicios</a>
+      <a href="galeria.html" class="bubble side">Galería</a>
+    </div>
+  </div>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
