@@ -1,39 +1,55 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>NAUTICA GYM</title>
-  <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
   <link rel="apple-touch-icon" href="iconos/icon-192.png" />
   <meta name="theme-color" content="#000000" />
 </head>
 <body>
   <div class="main">
-    <div class="social-bubbles">
-      <a href="https://instagram.com" class="bubble instagram">Instagram</a>
-      <a href="https://facebook.com" class="bubble facebook">Facebook</a>
-      <a href="https://tiktok.com" class="bubble tiktok">TikTok</a>
+
+    <div class="gym-footer">
+      <div class="social-bubbles">
+        <a href="https://instagram.com" class="bubble instagram" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://facebook.com" class="bubble facebook" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://tiktok.com" class="bubble tiktok" target="_blank" rel="noopener">TikTok</a>
+      </div>
+
+      <div class="gym-title">
+        <img src="icongym.png" class="icon-arm" alt="brazo musculoso" />
+        <span>NAUTICA GYM</span>
+        <img src="icongym.png" class="icon-arm" alt="brazo musculoso" />
+      </div>
     </div>
+
     <div class="hero-image">
-      <img src="gym0.jpeg" alt="Gym Image">
+      <img src="gym0.jpeg" alt="Imagen del gym" />
     </div>
-    <div class="gym-title">
-      <img src="icongym.png" class="icon-arm" alt="brazo">
-      <span>NAUTICA GYM</span>
-      <img src="icongym.png" class="icon-arm" alt="brazo">
-    </div>
+
     <div class="side-buttons">
       <a href="inscribete.html" class="bubble side">Inscríbete</a>
       <a href="servicios.html" class="bubble side">Nuestros Servicios</a>
       <a href="galeria.html" class="bubble side">Galería</a>
     </div>
+
   </div>
+
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js');
     }
   </script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(() => console.log('Service Worker registrado'))
+      .catch(err => console.error('Error registrando Service Worker:', err));
+  }
+</script>
 </body>
 </html>

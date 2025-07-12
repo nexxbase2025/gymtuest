@@ -1,10 +1,11 @@
+
 {
   "name": "NAUTICA GYM",
   "short_name": "NauticaGym",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#000000",
-  "theme_color": "#000000",
+  "theme_color": "#CD0E0E",
   "icons": [
     {
       "src": "logo.png",

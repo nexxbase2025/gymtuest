@@ -1,22 +1,32 @@
+
 <!DOCTYPE html>
 <html lang="es">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Servicios - NAUTICA GYM</title><link rel="stylesheet" href="style.css"></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Servicios - NAUTICA GYM</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
-  <div class="social-bubbles">
-    <a href="index.html" class="bubble volver">⬅ Volver al inicio</a>
+  <div class="main">
+    <div class="servicios">
+      <button onclick="mostrar(1)">Entrenamiento 1</button>
+      <button onclick="mostrar(2)">Entrenamiento 2</button>
+      <button onclick="mostrar(3)">Entrenamiento 3</button>
+      <p id="descripcion" style="margin-top: 1em; font-size: 1.1em; min-height: 6em;"></p>
+      <a href="index.html" class="bubble volver">⬅ Volver al inicio</a>
+    </div>
   </div>
-  <div class="servicios">
-    <button onclick="mostrar(1)">Entrenamiento 1</button>
-    <button onclick="mostrar(2)">Entrenamiento 2</button>
-    <button onclick="mostrar(3)">Entrenamiento 3</button>
-    <p id="descripcion"></p>
-  </div>
-<script>
-  function mostrar(num) {
-    const texto = "Consiste en trabajar los músculos del pecho y piernas, adicional una práctica de caminata, levantamiento de pesas y la alimentación correcta para un mejor resultado.";
-    document.getElementById('descripcion').textContent = texto;
-  }
-</script>
+
+  <script>
+    function mostrar(num) {
+      const textos = {
+        1: "Consiste en trabajar los músculos del pecho y piernas, adicional una práctica de caminata, levantamiento de pesas y la alimentación correcta para un mejor resultado.",
+        2: "Entrenamiento 2: Descripción del entrenamiento dos con enfoque en resistencia y cardio.",
+        3: "Entrenamiento 3: Descripción del entrenamiento tres centrado en flexibilidad y recuperación."
+      };
+      document.getElementById('descripcion').textContent = textos[num] || "";
+    }
+  </script>
 </body>
 </html>
