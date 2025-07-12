@@ -13,12 +13,36 @@
       background: url('fondoapp.webp') no-repeat center center fixed;
       background-size: cover;
       overflow: hidden;
+      color: white;
     }
 
     .gallery-container {
       height: 100vh;
       display: flex;
       flex-direction: column;
+    }
+
+    .frase-motivadora {
+      position: relative;
+      margin: 1em auto 0 auto;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border-radius: 999px;
+      border: 1px solid #fff;
+      padding: 0.6em 1.2em;
+      font-weight: bold;
+      font-size: 1em;
+      text-align: center;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+      animation: desaparecer 10s ease-in-out forwards;
+      max-width: 90%;
+      width: fit-content;
+    }
+
+    @keyframes desaparecer {
+      0%, 80% { opacity: 1; }
+      100% { opacity: 0; display: none; }
     }
 
     .carousel-wrapper {
@@ -61,6 +85,7 @@
       bottom: 0;
       left: 0;
       right: 0;
+      z-index: 1000;
     }
 
     .bubble.volver {
@@ -73,16 +98,38 @@
       border: 1px solid #fff;
       font-weight: bold;
       font-size: 1em;
+      transition: 0.3s ease;
     }
 
     .bubble.volver:hover {
       background: #fff;
       color: #000;
     }
+
+    @media (max-width: 480px) {
+      .frase-motivadora {
+        font-size: 0.95em;
+        padding: 0.5em 1em;
+      }
+
+      .carousel img {
+        max-height: 70vh;
+      }
+
+      .bubble.volver {
+        font-size: 0.9em;
+        padding: 0.5em 1em;
+      }
+    }
   </style>
 </head>
 <body>
+
   <div class="gallery-container">
+
+    <!-- Frase motivadora con estilo igual que en Inscribete/Servicios -->
+    <div class="frase-motivadora" id="fraseMotivadora">Cargando frase motivadora...</div>
+
     <div class="carousel-wrapper">
       <div class="carousel">
         <img src="gym1.jpeg" alt="Imagen 1">
@@ -90,9 +137,37 @@
         <img src="gym3.jpeg" alt="Imagen 3">
       </div>
     </div>
+
     <div class="bottom-bar">
       <a href="index.html" class="bubble volver">⬅ Volver al inicio</a>
     </div>
   </div>
+
+  <script>
+    const frases = [
+      "Nunca te rindas, sigue adelante.",
+      "Cada día cuenta, hazlo valer.",
+      "Tu cuerpo logra lo que tu mente cree.",
+      "Hazlo por ti, por tu futuro.",
+      "Hoy es un buen día para empezar.",
+      "Suda, sonríe, repite.",
+      "El dolor es temporal, la gloria es eterna.",
+      "Sé más fuerte que tus excusas.",
+      "El esfuerzo de hoy es tu orgullo de mañana.",
+      "No pares hasta estar orgulloso.",
+      "Actitud + esfuerzo = resultados.",
+      "Haz que el espejo te aplauda.",
+      "Tu meta no se alcanza sola.",
+      "Sueña grande, entrena fuerte.",
+      "Confía en el proceso.",
+      "Hazlo porque puedes.",
+      "Estás más cerca de lo que crees."
+    ];
+
+    const fraseElement = document.getElementById("fraseMotivadora");
+    const random = Math.floor(Math.random() * frases.length);
+    fraseElement.textContent = frases[random];
+  </script>
+
 </body>
 </html>

@@ -6,31 +6,353 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Inscríbete - NAUTICA GYM</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: url('fondoapp.webp') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .frase-motivacional {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-weight: bold;
+      padding: 1em;
+      margin-bottom: 1em;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+      max-width: 90%;
+      text-align: center;
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .formulario {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1.5em;
+      border-radius: 16px;
+      max-width: 380px;
+      width: 90%;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+    }
+
+    .formulario h2 {
+      margin-bottom: 1em;
+    }
+
+    .formulario input,
+    .formulario textarea {
+      width: 100%;
+      padding: 0.8em;
+      margin: 0.6em 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+    }
+
+    .formulario button {
+      width: 100%;
+      padding: 0.8em;
+      border-radius: 999px;
+      border: none;
+      background-color: #25D366;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .formulario button:hover {
+      background-color: #128C7E;
+    }
+
+    .volver-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 0.6em 1.2em;
+      border-radius: 999px;
+      font-weight: bold;
+      backdrop-filter: blur(6px);
+      transition: 0.3s;
+      z-index: 99;
+    }
+
+    .volver-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+      color: #000;
+    }
+
+    @media (max-width: 480px) {
+      .formulario {
+        padding: 1em;
+      }
+
+      .volver-btn {
+        font-size: 0.9em;
+        padding: 0.5em 1em;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="main">
-    <div class="formulario">
-      <h2>Inscripción</h2>
-      <input type="text" placeholder="Nombre y apellido" required />
-      <input type="email" placeholder="Correo electrónico" required />
-      <textarea placeholder="Mensaje"></textarea>
-      <button onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
-      <a href="index.html" class="bubble volver">⬅ Volver al inicio</a>
-    </div>
+
+  <!-- Frase motivacional -->
+  <div id="frase" class="frase-motivacional"></div>
+
+  <!-- Formulario -->
+  <div class="formulario">
+    <h2>Inscripción</h2>
+    <input type="text" placeholder="Nombre y apellido" required />
+    <input type="email" placeholder="Correo electrónico" required />
+    <textarea placeholder="Mensaje"></textarea>
+    <button onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
   </div>
+
+  <!-- Botón fijo -->
+  <a href="index.html" class="volver-btn">⬅ Volver al inicio</a>
 
   <script>
     function enviarWhatsApp() {
-      let nombre = document.querySelector('input[type=text]').value.trim();
-      let correo = document.querySelector('input[type=email]').value.trim();
-      let mensaje = document.querySelector('textarea').value.trim();
+      const nombre = document.querySelector('input[type="text"]').value.trim();
+      const correo = document.querySelector('input[type="email"]').value.trim();
+      const mensaje = document.querySelector('textarea').value.trim();
+
       if (!nombre || !correo) {
         alert('Por favor, completa nombre y correo electrónico.');
         return;
       }
-      let texto = `Hola, soy ${nombre}, mi correo es ${correo}. ${mensaje}`;
+
+      const texto = `Hola, soy ${nombre}, mi correo es ${correo}. ${mensaje}`;
       window.open(`https://wa.me/593999999999?text=${encodeURIComponent(texto)}`, "_blank");
     }
+
+    // Frases motivacionales
+    const frases = [
+  "Nunca te rindas, sigue adelante.",
+  "Cada día cuenta, hazlo valer.",
+  "Tu cuerpo logra lo que tu mente cree.",
+  "Entrena duro, brilla más fuerte.",
+  "El dolor es temporal, la gloria es eterna.",
+  "El éxito no se logra sentado.",
+  "Cree en ti y todo será posible.",
+  "Hazlo por ti, por tu futuro.",
+  "La disciplina vence al talento.",
+  "Hoy es un buen día para empezar.",
+  "Haz de tu cuerpo tu mejor versión.",
+  "No te detengas, ya comenzaste.",
+  "El límite lo pones tú.",
+  "Cada gota de sudor vale la pena.",
+  "El progreso es más importante que la perfección.",
+  "Si puedes soñarlo, puedes lograrlo.",
+  "Confía en el proceso.",
+  "Hazlo aunque no tengas ganas.",
+  "La constancia es la clave del éxito.",
+  "No pares hasta estar orgulloso.",
+  "Nada es imposible si lo intentas.",
+  "Tus sueños no funcionarán a menos que tú lo hagas.",
+  "El dolor de hoy es tu fuerza de mañana.",
+  "Levántate con determinación.",
+  "Trabaja en silencio y deja que tu cuerpo hable.",
+  "El éxito es la suma de pequeños esfuerzos diarios.",
+  "No busques excusas, busca resultados.",
+  "Transforma tu energía en movimiento.",
+  "No esperes, actúa ahora.",
+  "Sé más fuerte que tus excusas.",
+  "Hazlo por quien serás mañana.",
+  "Empieza, aunque sea con miedo.",
+  "Construye tu mejor versión.",
+  "Suda, sonríe, repite.",
+  "Actitud + esfuerzo = resultados.",
+  "No importa lo lento, sigue avanzando.",
+  "Entrena tu mente como entrenas tu cuerpo.",
+  "Cada paso cuenta.",
+  "Sé constante, no perfecto.",
+  "Persiste hasta que lo logres.",
+  "Hoy decides tu destino.",
+  "El esfuerzo siempre tiene recompensa.",
+  "Sé el cambio que deseas ver.",
+  "Ningún obstáculo es más grande que tus ganas.",
+  "Haz del reto tu motivación.",
+  "Sé valiente, da el primer paso.",
+  "Confía en ti, tú puedes.",
+  "Lo imposible solo tarda un poco más.",
+  "Demuéstrate de qué estás hecho.",
+  "Más acción, menos excusas.",
+  "La motivación te impulsa, el hábito te mantiene.",
+  "No hay atajos hacia ningún lugar que valga la pena.",
+  "Si no te desafía, no te cambia.",
+  "Haz que el sudor cuente.",
+  "Entrena con propósito.",
+  "Lo que haces hoy, lo verás mañana.",
+  "Cambia tus pensamientos y cambiarás tu cuerpo.",
+  "No hay esfuerzo sin recompensa.",
+  "Hazlo por la mejor versión de ti.",
+  "La clave está en no rendirse.",
+  "Estás más cerca de lo que crees.",
+  "Rompe tus propios límites.",
+  "Lo más difícil es empezar.",
+  "Hoy suma, no restes.",
+  "Pequeños pasos, grandes resultados.",
+  "No es magia, es trabajo.",
+  "Haz que tu esfuerzo valga la pena.",
+  "Entrena con el corazón.",
+  "Supera tus miedos entrenando.",
+  "Entrenar también es un acto de amor propio.",
+  "Motivación es empezar, disciplina es continuar.",
+  "Sé imparable.",
+  "Cree en tu fuerza interior.",
+  "El esfuerzo de hoy es el orgullo de mañana.",
+  "Nunca subestimes un buen entrenamiento.",
+  "Hoy mejor que ayer, mañana mejor que hoy.",
+  "Hazlo ahora, luego será tarde.",
+  "Eres capaz de todo lo que te propones.",
+  "Despierta con ganas de superarte.",
+  "Siente el poder en cada repetición.",
+  "Invierte en ti.",
+  "Tus hábitos definen tu cuerpo.",
+  "Cuando creas que no puedes más, haz una repetición más.",
+  "Sigue, incluso si es difícil.",
+  "Tu único rival eres tú mismo.",
+  "Hazlo porque puedes.",
+  "Los resultados vienen con constancia.",
+  "Sé tu mayor inspiración.",
+  "Todo esfuerzo cuenta.",
+  "Tu progreso es personal.",
+  "Enfócate y da el 100%.",
+  "No hay límites, solo excusas.",
+  "Muévete con propósito.",
+  "Construye salud, fuerza y confianza.",
+  "Nadie lo hará por ti.",
+  "Mantén la mirada en tu meta.",
+  "Lo harás porque lo decidiste.",
+  "Grita con el cuerpo, no con la voz.",
+  "Si te caes, te levantas más fuerte.",
+  "Transforma el cansancio en fuerza.",
+  "El compromiso supera la motivación.",
+  "Sueña grande, entrena fuerte.",
+  "Nunca es tarde para comenzar.",
+  "Tú eliges quién quieres ser.",
+  "Levántate y trabaja por ello.",
+  "Más actitud, menos quejas.",
+  "Tú eres tu mejor proyecto.",
+  "Entrena como si tu vida dependiera de ello.",
+  "Haz que tus metas te despierten.",
+  "Hazlo, no lo pienses tanto.",
+  "El verdadero cambio es interno.",
+  "No busques excusas, busca razones.",
+  "Haz que el lunes valga la pena.",
+  "La mejor inversión es tu salud.",
+  "Convierte la debilidad en fortaleza.",
+  "Hoy empieza el cambio.",
+  "Más acción, menos palabras.",
+  "Desafíate, supérate.",
+  "Tu cuerpo puede soportar más de lo que crees.",
+  "No pares hasta alcanzar tus metas.",
+  "Eres más fuerte de lo que imaginas.",
+  "Hazlo por ti, no por los demás.",
+  "Tu esfuerzo hoy es tu recompensa mañana.",
+  "Esfuerzo, sudor, éxito.",
+  "Convierte tu rutina en pasión.",
+  "Conviértete en tu versión más fuerte.",
+  "La constancia te llevará donde la motivación no llega.",
+  "Despierta con metas, duerme con logros.",
+  "Lucha por lo que quieres.",
+  "Tú decides si lo logras.",
+  "La diferencia está en el esfuerzo.",
+  "Haz de cada día un paso hacia tu meta.",
+  "Es tu momento, hazlo.",
+  "Haz que duela para que valga.",
+  "Persiste hasta vencer.",
+  "Lucha, entrena, gana.",
+  "Despierta, entrena, repite.",
+  "Sigue aunque nadie te vea.",
+  "El gimnasio es tu templo.",
+  "Sé fuerte por dentro y por fuera.",
+  "Haz del cansancio tu maestro.",
+  "La rutina te hace fuerte.",
+  "El cambio empieza en ti.",
+  "No pares hasta verte transformado.",
+  "Eres energía en movimiento.",
+  "Rompe excusas con resultados.",
+  "Que la pereza no te gane.",
+  "El reto de hoy, tu logro de mañana.",
+  "Empieza con una repetición.",
+  "Haz que el espejo te aplauda.",
+  "Tu meta no se alcanza sola.",
+  "Trabaja duro en silencio.",
+  "Suda con orgullo.",
+  "Enfoca tu energía.",
+  "Hazte responsable de tu cambio.",
+  "Cambia excusas por acción.",
+  "Que tu cuerpo hable por ti.",
+  "Vas bien, sigue así.",
+  "Hoy es el primer día del resto de tu vida.",
+  "Confía, entrena, logra.",
+  "Haz lo difícil hasta que se vuelva fácil.",
+  "Sueña en grande, actúa en grande.",
+  "Esfuerzo + tiempo = transformación.",
+  "Sé un guerrero, no un espectador.",
+  "Actitud de campeón.",
+  "Nadie lo hará por ti, hazlo tú.",
+  "Empieza hoy, no mañana.",
+  "Haz que cuente cada segundo.",
+  "Tu progreso es tuyo.",
+  "El dolor construye carácter.",
+  "En la lucha se encuentra la victoria.",
+  "La acción vence el miedo.",
+  "Respira, levanta, repite.",
+  "No te detengas ahora.",
+  "Sigue adelante, cada paso suma.",
+  "Disfruta el proceso.",
+  "La victoria empieza en tu mente.",
+  "Sé el ejemplo.",
+  "Da más de lo que creías poder.",
+  "Entrena con pasión.",
+  "Deja que tus resultados hablen.",
+  "Actitud positiva, cuerpo fuerte.",
+  "Hazlo con todo o no lo hagas.",
+  "Despierta tu mejor versión.",
+  "Haz que el cambio sea visible.",
+  "Trabaja tu cuerpo como un arte.",
+  "La constancia es tu mejor aliada.",
+  "Gana con cada entrenamiento.",
+  "Haz del ejercicio un estilo de vida.",
+  "Motívate con tus metas.",
+  "Empieza hoy tu transformación.",
+  "No necesitas suerte, necesitas esfuerzo.",
+  "Haz que lo imposible sea posible.",
+  "Hoy es un buen día para darlo todo."
+];
+
+    const fraseBox = document.getElementById('frase');
+    const aleatoria = frases[Math.floor(Math.random() * frases.length)];
+    fraseBox.textContent = aleatoria;
+
+    setTimeout(() => {
+      fraseBox.style.display = "none";
+    }, 5000);
   </script>
+
 </body>
 </html>
