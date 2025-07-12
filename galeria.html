@@ -13,7 +13,6 @@
       background: url('fondoapp.webp') no-repeat center center fixed;
       background-size: cover;
       overflow: hidden;
-      color: white;
     }
 
     .gallery-container {
@@ -22,27 +21,24 @@
       flex-direction: column;
     }
 
-    .frase-motivadora {
-      position: relative;
-      margin: 1em auto 0 auto;
-      background: rgba(255, 255, 255, 0.2);
+    .mensaje-motivacional {
+      background: rgba(255, 255, 255, 0.15);
       color: #fff;
-      border-radius: 999px;
-      border: 1px solid #fff;
-      padding: 0.6em 1.2em;
-      font-weight: bold;
-      font-size: 1em;
+      padding: 0.8em 1.2em;
+      border-radius: 12px;
+      font-size: 1.1em;
+      font-weight: 600;
+      margin: 40px auto 1em auto;
+      max-width: 400px;
       text-align: center;
-      backdrop-filter: blur(6px);
       box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
-      animation: desaparecer 10s ease-in-out forwards;
-      max-width: 90%;
-      width: fit-content;
+      animation: fadeInOut 5s forwards;
     }
 
-    @keyframes desaparecer {
-      0%, 80% { opacity: 1; }
-      100% { opacity: 0; display: none; }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(-10px); }
+      10%, 90% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-10px); }
     }
 
     .carousel-wrapper {
@@ -85,7 +81,6 @@
       bottom: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
     }
 
     .bubble.volver {
@@ -98,7 +93,6 @@
       border: 1px solid #fff;
       font-weight: bold;
       font-size: 1em;
-      transition: 0.3s ease;
     }
 
     .bubble.volver:hover {
@@ -107,37 +101,35 @@
     }
 
     @media (max-width: 480px) {
-      .frase-motivadora {
-        font-size: 0.95em;
-        padding: 0.5em 1em;
+      .mensaje-motivacional {
+        font-size: 1em;
+        margin: 30px auto 1em auto;
+        max-width: 90vw;
       }
 
       .carousel img {
-        max-height: 70vh;
-      }
-
-      .bubble.volver {
-        font-size: 0.9em;
-        padding: 0.5em 1em;
+        max-width: 95%;
       }
     }
   </style>
 </head>
 <body>
-
   <div class="gallery-container">
 
-    <!-- Frase motivadora con estilo igual que en Inscribete/Servicios -->
-    <div class="frase-motivadora" id="fraseMotivadora">Cargando frase motivadora...</div>
+    <!-- Frase motivacional -->
+    <div id="mensajeMotivacional" class="mensaje-motivacional"></div>
 
+    <!-- Carrusel de imágenes -->
     <div class="carousel-wrapper">
       <div class="carousel">
-        <img src="gym1.jpeg" alt="Imagen 1">
-        <img src="gym2.jpeg" alt="Imagen 2">
-        <img src="gym3.jpeg" alt="Imagen 3">
+        <img src="gym1.webp" alt="Imagen 1">
+        <img src="gym2.webp" alt="Imagen 2">
+        <img src="gym3.webp" alt="Imagen 3">
+        <img src="gym.webp" alt="Imagen 3">
       </div>
     </div>
 
+    <!-- Botón de regreso -->
     <div class="bottom-bar">
       <a href="index.html" class="bubble volver">⬅ Volver al inicio</a>
     </div>
@@ -145,29 +137,210 @@
 
   <script>
     const frases = [
-      "Nunca te rindas, sigue adelante.",
-      "Cada día cuenta, hazlo valer.",
-      "Tu cuerpo logra lo que tu mente cree.",
-      "Hazlo por ti, por tu futuro.",
-      "Hoy es un buen día para empezar.",
-      "Suda, sonríe, repite.",
-      "El dolor es temporal, la gloria es eterna.",
-      "Sé más fuerte que tus excusas.",
-      "El esfuerzo de hoy es tu orgullo de mañana.",
-      "No pares hasta estar orgulloso.",
-      "Actitud + esfuerzo = resultados.",
-      "Haz que el espejo te aplauda.",
-      "Tu meta no se alcanza sola.",
-      "Sueña grande, entrena fuerte.",
-      "Confía en el proceso.",
-      "Hazlo porque puedes.",
-      "Estás más cerca de lo que crees."
+    "Nunca te rindas, sigue adelante.",
+  "Cada día cuenta, hazlo valer.",
+  "Tu cuerpo logra lo que tu mente cree.",
+  "Entrena duro, brilla más fuerte.",
+  "El dolor es temporal, la gloria es eterna.",
+  "El éxito no se logra sentado.",
+  "Cree en ti y todo será posible.",
+  "Hazlo por ti, por tu futuro.",
+  "La disciplina vence al talento.",
+  "Hoy es un buen día para empezar.",
+  "Haz de tu cuerpo tu mejor versión.",
+  "No te detengas, ya comenzaste.",
+  "El límite lo pones tú.",
+  "Cada gota de sudor vale la pena.",
+  "El progreso es más importante que la perfección.",
+  "Si puedes soñarlo, puedes lograrlo.",
+  "Confía en el proceso.",
+  "Hazlo aunque no tengas ganas.",
+  "La constancia es la clave del éxito.",
+  "No pares hasta estar orgulloso.",
+  "Nada es imposible si lo intentas.",
+  "Tus sueños no funcionarán a menos que tú lo hagas.",
+  "El dolor de hoy es tu fuerza de mañana.",
+  "Levántate con determinación.",
+  "Trabaja en silencio y deja que tu cuerpo hable.",
+  "El éxito es la suma de pequeños esfuerzos diarios.",
+  "No busques excusas, busca resultados.",
+  "Transforma tu energía en movimiento.",
+  "No esperes, actúa ahora.",
+  "Sé más fuerte que tus excusas.",
+  "Hazlo por quien serás mañana.",
+  "Empieza, aunque sea con miedo.",
+  "Construye tu mejor versión.",
+  "Suda, sonríe, repite.",
+  "Actitud + esfuerzo = resultados.",
+  "No importa lo lento, sigue avanzando.",
+  "Entrena tu mente como entrenas tu cuerpo.",
+  "Cada paso cuenta.",
+  "Sé constante, no perfecto.",
+  "Persiste hasta que lo logres.",
+  "Hoy decides tu destino.",
+  "El esfuerzo siempre tiene recompensa.",
+  "Sé el cambio que deseas ver.",
+  "Ningún obstáculo es más grande que tus ganas.",
+  "Haz del reto tu motivación.",
+  "Sé valiente, da el primer paso.",
+  "Confía en ti, tú puedes.",
+  "Lo imposible solo tarda un poco más.",
+  "Demuéstrate de qué estás hecho.",
+  "Más acción, menos excusas.",
+  "La motivación te impulsa, el hábito te mantiene.",
+  "No hay atajos hacia ningún lugar que valga la pena.",
+  "Si no te desafía, no te cambia.",
+  "Haz que el sudor cuente.",
+  "Entrena con propósito.",
+  "Lo que haces hoy, lo verás mañana.",
+  "Cambia tus pensamientos y cambiarás tu cuerpo.",
+  "No hay esfuerzo sin recompensa.",
+  "Hazlo por la mejor versión de ti.",
+  "La clave está en no rendirse.",
+  "Estás más cerca de lo que crees.",
+  "Rompe tus propios límites.",
+  "Lo más difícil es empezar.",
+  "Hoy suma, no restes.",
+  "Pequeños pasos, grandes resultados.",
+  "No es magia, es trabajo.",
+  "Haz que tu esfuerzo valga la pena.",
+  "Entrena con el corazón.",
+  "Supera tus miedos entrenando.",
+  "Entrenar también es un acto de amor propio.",
+  "Motivación es empezar, disciplina es continuar.",
+  "Sé imparable.",
+  "Cree en tu fuerza interior.",
+  "El esfuerzo de hoy es el orgullo de mañana.",
+  "Nunca subestimes un buen entrenamiento.",
+  "Hoy mejor que ayer, mañana mejor que hoy.",
+  "Hazlo ahora, luego será tarde.",
+  "Eres capaz de todo lo que te propones.",
+  "Despierta con ganas de superarte.",
+  "Siente el poder en cada repetición.",
+  "Invierte en ti.",
+  "Tus hábitos definen tu cuerpo.",
+  "Cuando creas que no puedes más, haz una repetición más.",
+  "Sigue, incluso si es difícil.",
+  "Tu único rival eres tú mismo.",
+  "Hazlo porque puedes.",
+  "Los resultados vienen con constancia.",
+  "Sé tu mayor inspiración.",
+  "Todo esfuerzo cuenta.",
+  "Tu progreso es personal.",
+  "Enfócate y da el 100%.",
+  "No hay límites, solo excusas.",
+  "Muévete con propósito.",
+  "Construye salud, fuerza y confianza.",
+  "Nadie lo hará por ti.",
+  "Mantén la mirada en tu meta.",
+  "Lo harás porque lo decidiste.",
+  "Grita con el cuerpo, no con la voz.",
+  "Si te caes, te levantas más fuerte.",
+  "Transforma el cansancio en fuerza.",
+  "El compromiso supera la motivación.",
+  "Sueña grande, entrena fuerte.",
+  "Nunca es tarde para comenzar.",
+  "Tú eliges quién quieres ser.",
+  "Levántate y trabaja por ello.",
+  "Más actitud, menos quejas.",
+  "Tú eres tu mejor proyecto.",
+  "Entrena como si tu vida dependiera de ello.",
+  "Haz que tus metas te despierten.",
+  "Hazlo, no lo pienses tanto.",
+  "El verdadero cambio es interno.",
+  "No busques excusas, busca razones.",
+  "Haz que el lunes valga la pena.",
+  "La mejor inversión es tu salud.",
+  "Convierte la debilidad en fortaleza.",
+  "Hoy empieza el cambio.",
+  "Más acción, menos palabras.",
+  "Desafíate, supérate.",
+  "Tu cuerpo puede soportar más de lo que crees.",
+  "No pares hasta alcanzar tus metas.",
+  "Eres más fuerte de lo que imaginas.",
+  "Hazlo por ti, no por los demás.",
+  "Tu esfuerzo hoy es tu recompensa mañana.",
+  "Esfuerzo, sudor, éxito.",
+  "Convierte tu rutina en pasión.",
+  "Conviértete en tu versión más fuerte.",
+  "La constancia te llevará donde la motivación no llega.",
+  "Despierta con metas, duerme con logros.",
+  "Lucha por lo que quieres.",
+  "Tú decides si lo logras.",
+  "La diferencia está en el esfuerzo.",
+  "Haz de cada día un paso hacia tu meta.",
+  "Es tu momento, hazlo.",
+  "Haz que duela para que valga.",
+  "Persiste hasta vencer.",
+  "Lucha, entrena, gana.",
+  "Despierta, entrena, repite.",
+  "Sigue aunque nadie te vea.",
+  "El gimnasio es tu templo.",
+  "Sé fuerte por dentro y por fuera.",
+  "Haz del cansancio tu maestro.",
+  "La rutina te hace fuerte.",
+  "El cambio empieza en ti.",
+  "No pares hasta verte transformado.",
+  "Eres energía en movimiento.",
+  "Rompe excusas con resultados.",
+  "Que la pereza no te gane.",
+  "El reto de hoy, tu logro de mañana.",
+  "Empieza con una repetición.",
+  "Haz que el espejo te aplauda.",
+  "Tu meta no se alcanza sola.",
+  "Trabaja duro en silencio.",
+  "Suda con orgullo.",
+  "Enfoca tu energía.",
+  "Hazte responsable de tu cambio.",
+  "Cambia excusas por acción.",
+  "Que tu cuerpo hable por ti.",
+  "Vas bien, sigue así.",
+  "Hoy es el primer día del resto de tu vida.",
+  "Confía, entrena, logra.",
+  "Haz lo difícil hasta que se vuelva fácil.",
+  "Sueña en grande, actúa en grande.",
+  "Esfuerzo + tiempo = transformación.",
+  "Sé un guerrero, no un espectador.",
+  "Actitud de campeón.",
+  "Nadie lo hará por ti, hazlo tú.",
+  "Empieza hoy, no mañana.",
+  "Haz que cuente cada segundo.",
+  "Tu progreso es tuyo.",
+  "El dolor construye carácter.",
+  "En la lucha se encuentra la victoria.",
+  "La acción vence el miedo.",
+  "Respira, levanta, repite.",
+  "No te detengas ahora.",
+  "Sigue adelante, cada paso suma.",
+  "Disfruta el proceso.",
+  "La victoria empieza en tu mente.",
+  "Sé el ejemplo.",
+  "Da más de lo que creías poder.",
+  "Entrena con pasión.",
+  "Deja que tus resultados hablen.",
+  "Actitud positiva, cuerpo fuerte.",
+  "Hazlo con todo o no lo hagas.",
+  "Despierta tu mejor versión.",
+  "Haz que el cambio sea visible.",
+  "Trabaja tu cuerpo como un arte.",
+  "La constancia es tu mejor aliada.",
+  "Gana con cada entrenamiento.",
+  "Haz del ejercicio un estilo de vida.",
+  "Motívate con tus metas.",
+  "Empieza hoy tu transformación.",
+  "No necesitas suerte, necesitas esfuerzo.",
+  "Haz que lo imposible sea posible.",
+  "Hoy es un buen día para darlo todo."
     ];
 
-    const fraseElement = document.getElementById("fraseMotivadora");
-    const random = Math.floor(Math.random() * frases.length);
-    fraseElement.textContent = frases[random];
-  </script>
+    function mostrarFrase() {
+      const index = Math.floor(Math.random() * frases.length);
+      const mensaje = frases[index];
+      const div = document.getElementById('mensajeMotivacional');
+      div.textContent = mensaje;
+    }
 
+    mostrarFrase();
+  </script>
 </body>
 </html>

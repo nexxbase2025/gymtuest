@@ -39,7 +39,7 @@
       margin-bottom: 1em;
       max-width: 400px;
       text-align: center;
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
       animation: fadeInOut 5s forwards;
     }
 
@@ -139,21 +139,22 @@
     <!-- Frase motivacional -->
     <div id="mensajeMotivacional" class="mensaje-motivacional"></div>
 
+    <!-- Caja de servicios -->
     <div class="servicios">
-      <button onclick="mostrar(1)">Entrenamiento 1</button>
-      <button onclick="mostrar(2)">Entrenamiento 2</button>
-      <button onclick="mostrar(3)">Entrenamiento 3</button>
-      <!-- Puedes duplicar botones como este para más entrenamientos -->
+      <button onclick="mostrar(1)">Power Muscle</button>
+      <button onclick="mostrar(2)">Cardio Training</button>
+      <button onclick="mostrar(3)">Flex & Recover</button>
       <p id="descripcion"></p>
     </div>
   </div>
 
-  <!-- Botón fijo al fondo de pantalla -->
+  <!-- Botón fijo de volver -->
   <a href="index.html" class="volver-btn">⬅ Volver al inicio</a>
 
+  <!-- Scripts -->
   <script>
     const frasesMotivacionales = [
-  "Nunca te rindas, sigue adelante.",
+      "Nunca te rindas, sigue adelante.",
   "Cada día cuenta, hazlo valer.",
   "Tu cuerpo logra lo que tu mente cree.",
   "Entrena duro, brilla más fuerte.",
@@ -347,7 +348,7 @@
   "No necesitas suerte, necesitas esfuerzo.",
   "Haz que lo imposible sea posible.",
   "Hoy es un buen día para darlo todo."
-];
+    ];
 
     function mostrarFrase() {
       const index = Math.floor(Math.random() * frasesMotivacionales.length);
@@ -364,11 +365,11 @@
 
     function mostrar(num) {
       const textos = {
-        1: "Consiste en trabajar los músculos del pecho y piernas, adicional una práctica de caminata, levantamiento de pesas y la alimentación correcta para un mejor resultado.",
-        2: "Entrenamiento 2: Descripción del entrenamiento dos con enfoque en resistencia y cardio.",
-        3: "Entrenamiento 3: Descripción del entrenamiento tres centrado en flexibilidad y recuperación."
+        1: "🏋️‍♂️ <strong>Power Muscle</strong><br>Entrenamiento enfocado en fuerza y volumen muscular. Rutina intensa con pesas libres, barras, y poleas. Ideal para quienes desean desarrollar masa muscular y definición.",
+        2: "🏃‍♀️ <strong>Cardio Training</strong><br>Sesiones dinámicas para quemar grasa y mejorar la resistencia. Incluye caminata rápida, bicicleta, elíptica y ejercicios funcionales de alta intensidad (HIIT).",
+        3: "🧘‍♂️ <strong>Flex & Recover</strong><br>Entrenamiento suave enfocado en estiramientos, movilidad articular y recuperación activa. Perfecto para días de descanso o post-entrenamientos fuertes."
       };
-      document.getElementById('descripcion').textContent = textos[num] || "";
+      document.getElementById('descripcion').innerHTML = textos[num] || "";
     }
   </script>
 </body>
