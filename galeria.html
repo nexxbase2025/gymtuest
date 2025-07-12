@@ -3,18 +3,96 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Galería - NAUTICA GYM</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: url('fondoapp.webp') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .gallery-container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .carousel-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      scroll-snap-type: x mandatory;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      width: 100%;
+      padding: 1em;
+      gap: 1em;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel img {
+      flex: 0 0 100%;
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: cover;
+      border-radius: 16px;
+      aspect-ratio: 4 / 5;
+      scroll-snap-align: center;
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+      margin: auto;
+    }
+
+    .bottom-bar {
+      background: rgba(0,0,0,0.6);
+      padding: 1em;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .bubble.volver {
+      padding: 0.6em 1.2em;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      text-decoration: none;
+      backdrop-filter: blur(4px);
+      border: 1px solid #fff;
+      font-weight: bold;
+      font-size: 1em;
+    }
+
+    .bubble.volver:hover {
+      background: #fff;
+      color: #000;
+    }
+  </style>
 </head>
 <body>
-  <div class="main">
-    <div class="carousel">
-      <img src="gym1.jpeg" alt="Galería 1" />
-      <img src="gym2.jpeg" alt="Galería 2" />
-      <img src="gym3.jpeg" alt="Galería 3" />
+  <div class="gallery-container">
+    <div class="carousel-wrapper">
+      <div class="carousel">
+        <img src="gym1.jpeg" alt="Imagen 1">
+        <img src="gym2.jpeg" alt="Imagen 2">
+        <img src="gym3.jpeg" alt="Imagen 3">
+      </div>
     </div>
-    <a href="index.html" class="bubble volver">⬅ Volver al inicio</a>
+    <div class="bottom-bar">
+      <a href="index.html" class="bubble volver">⬅ Volver al inicio</a>
+    </div>
   </div>
 </body>
 </html>
