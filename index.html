@@ -200,11 +200,17 @@
     </div>
   </div>
 
+  <!-- 🟢 iOS Prompt con ícono Safari -->
   <div id="iosInstallPrompt">
-    <strong>Instala la app</strong>
-    Abre el menú de Safari y selecciona "Agregar a pantalla de inicio"
+    <strong>Instala la app</strong><br>
+    Toca 
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M5 12h14M12 5l4 4m-4-4l-4 4"/>
+    </svg>
+    y selecciona <em>"Agregar a pantalla de inicio"</em>
   </div>
 
+  <!-- 🟢 Android Prompt -->
   <div id="androidInstallPrompt">
     <strong>¿Quieres instalar esta app?</strong><br>
     Pulsa aquí abajo y selecciona "Instalar"
@@ -212,7 +218,7 @@
 
   <script>
     const frases = [
-  "Nunca te rindas, sigue adelante.",
+      "Nunca te rindas, sigue adelante.",
   "Cada día cuenta, hazlo valer.",
   "Tu cuerpo logra lo que tu mente cree.",
   "Entrena duro, brilla más fuerte.",
@@ -406,17 +412,16 @@
   "No necesitas suerte, necesitas esfuerzo.",
   "Haz que lo imposible sea posible.",
   "Hoy es un buen día para darlo todo."
-];
-    document.getElementById("motivacion").textContent = frases[Math.floor(Math.random() * frases.length)];
+    ];
+    document.getElementById("motivacion").textContent =
+      frases[Math.floor(Math.random() * frases.length)];
   </script>
 
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js');
     }
-  </script>
 
-  <script>
     let deferredPrompt;
     const androidPrompt = document.getElementById("androidInstallPrompt");
     const iosPrompt = document.getElementById("iosInstallPrompt");

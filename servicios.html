@@ -7,8 +7,9 @@
   <title>Servicios - NAUTICA GYM</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: sans-serif;
       background: url('fondoapp.webp') no-repeat center center fixed;
       background-size: cover;
@@ -16,6 +17,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     .main {
@@ -25,7 +27,6 @@
       align-items: center;
       padding: 1em;
       box-sizing: border-box;
-      position: relative;
       flex-direction: column;
     }
 
@@ -37,7 +38,7 @@
       font-size: 1.1em;
       font-weight: 600;
       margin-bottom: 1em;
-      max-width: 400px;
+      max-width: 90vw;
       text-align: center;
       box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
       animation: fadeInOut 5s forwards;
@@ -51,15 +52,17 @@
 
     .servicios {
       background: rgba(0, 0, 0, 0.6);
-      padding: 2em;
+      padding: 1.5em;
       border-radius: 15px;
-      max-width: 400px;
+      max-width: 100%;
       width: 100%;
+      max-width: 380px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1em;
+      box-sizing: border-box;
     }
 
     .servicios button {
@@ -73,6 +76,7 @@
       transition: background 0.3s ease;
       width: 100%;
       max-width: 300px;
+      box-sizing: border-box;
     }
 
     .servicios button:hover {
@@ -86,7 +90,8 @@
       line-height: 1.5em;
       min-height: 6em;
       color: #eee;
-      min-width: 300px;
+      max-width: 100%;
+      word-wrap: break-word;
     }
 
     .volver-btn {
@@ -115,6 +120,7 @@
     @media (max-width: 480px) {
       .servicios {
         padding: 1em;
+        max-width: 90vw;
       }
 
       .servicios button {
@@ -135,7 +141,6 @@
 </head>
 <body>
   <div class="main">
-
     <!-- Frase motivacional -->
     <div id="mensajeMotivacional" class="mensaje-motivacional"></div>
 

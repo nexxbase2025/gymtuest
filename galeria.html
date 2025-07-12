@@ -12,13 +12,16 @@
       font-family: sans-serif;
       background: url('fondoapp.webp') no-repeat center center fixed;
       background-size: cover;
-      overflow: hidden;
     }
 
     .gallery-container {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1em;
+      box-sizing: border-box;
     }
 
     .mensaje-motivacional {
@@ -28,7 +31,7 @@
       border-radius: 12px;
       font-size: 1.1em;
       font-weight: 600;
-      margin: 40px auto 1em auto;
+      margin-bottom: 1em;
       max-width: 400px;
       text-align: center;
       box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
@@ -42,10 +45,11 @@
     }
 
     .carousel-wrapper {
-      flex: 1;
+      width: 100%;
+      max-width: 480px;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       overflow: hidden;
       position: relative;
     }
@@ -55,16 +59,15 @@
       scroll-snap-type: x mandatory;
       overflow-x: auto;
       scroll-behavior: smooth;
-      width: 100%;
-      padding: 1em;
       gap: 1em;
       -webkit-overflow-scrolling: touch;
+      padding-bottom: 1em;
     }
 
     .carousel img {
       flex: 0 0 100%;
-      max-width: 90%;
-      max-height: 90vh;
+      max-width: 100%;
+      height: auto;
       object-fit: cover;
       border-radius: 16px;
       aspect-ratio: 4 / 5;
@@ -74,13 +77,9 @@
     }
 
     .bottom-bar {
-      background: rgba(0,0,0,0.6);
+      margin-top: 1.5em;
       padding: 1em;
       text-align: center;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
     }
 
     .bubble.volver {
@@ -93,6 +92,7 @@
       border: 1px solid #fff;
       font-weight: bold;
       font-size: 1em;
+      transition: background 0.3s ease;
     }
 
     .bubble.volver:hover {
@@ -103,7 +103,7 @@
     @media (max-width: 480px) {
       .mensaje-motivacional {
         font-size: 1em;
-        margin: 30px auto 1em auto;
+        margin-bottom: 1em;
         max-width: 90vw;
       }
 
@@ -125,7 +125,7 @@
         <img src="gym1.webp" alt="Imagen 1">
         <img src="gym2.webp" alt="Imagen 2">
         <img src="gym3.webp" alt="Imagen 3">
-        <img src="gym.webp" alt="Imagen 3">
+        <img src="gym.webp" alt="Imagen 4">
       </div>
     </div>
 
@@ -137,7 +137,7 @@
 
   <script>
     const frases = [
-    "Nunca te rindas, sigue adelante.",
+      "Nunca te rindas, sigue adelante.",
   "Cada día cuenta, hazlo valer.",
   "Tu cuerpo logra lo que tu mente cree.",
   "Entrena duro, brilla más fuerte.",
